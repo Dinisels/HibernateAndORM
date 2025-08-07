@@ -11,8 +11,6 @@ public interface UserService {
     List<User> listUsers();
 
     @Transactional(readOnly = true)
-    User getUserByModelAndSeries(Car car);
-
-    @Transactional(readOnly = true)
     User getUserByModelAndSeries(String model, int series);
+
 }
