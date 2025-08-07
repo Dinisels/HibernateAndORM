@@ -27,9 +27,9 @@ public class MainApp {
       Car car4 = new Car("model4", 1);
 
       user1.setCar(car1);
-      user1.setCar(car2);
-      user1.setCar(car3);
-      user1.setCar(car4);
+      user2.setCar(car2);
+      user3.setCar(car3);
+      user4.setCar(car4);
 
       userService.add(user1);
       userService.add(user2);
@@ -45,12 +45,15 @@ public class MainApp {
 
       List<User> users = userService.listUsers();
       for (User user : users) {
-         System.out.println("Id = "+user.getId());
-         System.out.println("First Name = "+user.getFirstName());
-         System.out.println("Last Name = "+user.getLastName());
-         System.out.println("Email = "+user.getEmail());
-         System.out.println();
+          System.out.println(user.toString());
+//         System.out.println("Id = "+user.getId());
+//         System.out.println("First Name = "+user.getFirstName());
+//         System.out.println("Last Name = "+user.getLastName());
+//         System.out.println("Email = "+user.getEmail());
+//         System.out.println();
       }
+
+       System.out.println(userService.getUserByModelAndSeries("model2", 6).toString());
 
       context.close();
    }

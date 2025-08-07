@@ -19,7 +19,7 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   @JoinColumn
+   @JoinColumn(name = "car_id")
    @OneToOne(cascade = CascadeType.ALL)
    private Car car;
 
@@ -70,4 +70,9 @@ public class User {
    public void setEmail(String email) {
       this.email = email;
    }
+
+    @Override
+    public String toString() {
+        return "Id_user = " + getId() + ", FirstName = " + getFirstName() + ", LastName = " + getLastName() + "Car = " + getCar();
+    }
 }

@@ -14,6 +14,9 @@ public class Car {
     @Column
     private int series;
 
+    @OneToOne(mappedBy = "car") // ссылка на поле "car" в классе User
+    private User user;
+
     public Car(String model, int series) {
         this.id = id;
         this.model = model;
