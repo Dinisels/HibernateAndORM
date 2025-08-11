@@ -36,6 +36,7 @@ public class UserDaoImp implements UserDao {
         Query<User> query = session.createQuery(hql, User.class);
         query.setParameter("model", model);
         query.setParameter("series", series);
+        query.setMaxResults(1);
         return query.uniqueResult();
     }
 
