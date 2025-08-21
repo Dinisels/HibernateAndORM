@@ -46,7 +46,13 @@ public class MainApp {
           System.out.println(user.toString());
       }
 
+       System.out.println("LASTR");
+       System.out.println("LASTR");
+       System.out.println("LASTR");
        System.out.println(userService.getUserByModelAndSeries("model2", 6).toString());
+       System.out.println("LASTR");
+       System.out.println("LASTR");
+       System.out.println(userService.getUserByModelAndSeries("model12123", 6).toString());
        context.close();
    }
 }

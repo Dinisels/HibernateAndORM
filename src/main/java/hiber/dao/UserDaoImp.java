@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserDaoImp implements UserDao {
@@ -38,10 +40,12 @@ public class UserDaoImp implements UserDao {
         Query<User> query = session.createQuery(hql, User.class);
         query.setParameter("model", model);
         query.setParameter("series", series);
-        List<User> userList = query.getResultList();
-        System.out.println("AllUserList: " +  userList.toString());
-        System.out.println("return: " + userList.get(0));
-        return userList.get(0);
+
+        return query.getResultStream()
+                .findFirst()
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Пользователь с моделью: " + model + ", и серией: " + series + " не найден"
+                ));
     }
 
 
